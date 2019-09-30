@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
 namespace EnrollmentApplication.Models
 {
-	public class Enrollment
+	public class Enrollment : DropCreateDatabaseAlways<EnrollmentDB>
 	{
 		public virtual int EnrollmentId { get; set; }
 		public virtual int StudentId { get; set; }
