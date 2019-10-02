@@ -39,6 +39,7 @@
 	<div>
 		@Html.LabelFor(m => m.AssignedCampus)
 		@Html.TextBoxFor(model => model.AssignedCampus)
+		@Html.ValidationMessageFor(model => model.AssignedCampus, "", new { @class = "text-danger" })
 	</div>
 	<div>
 		@Html.LabelFor(m => m.EnrollmentSemester)
@@ -46,10 +47,12 @@
 		@Html.RadioButtonFor(m => m.EnrollmentSemester, "Spring") Spring
 		@Html.RadioButtonFor(m => m.EnrollmentSemester, "Summer") Summer
 		@Html.RadioButtonFor(m => m.EnrollmentSemester, "Fall") Fall
+		@Html.ValidationMessageFor(model => model.EnrollmentSemester, "", new { @class = "text-danger" })
 	</div>
 	<div>
 		@Html.LabelFor(m => m.EnrollmentYear)
 		@Html.TextBoxFor(m => m.EnrollmentYear)
+		@Html.ValidationMessageFor(model => model.EnrollmentYear, "", new { @class = "text-danger" })
 	</div>
 	
 	<div class="form-group">
