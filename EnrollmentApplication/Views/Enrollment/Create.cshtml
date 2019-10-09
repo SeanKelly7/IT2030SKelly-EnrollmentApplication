@@ -1,79 +1,86 @@
 ﻿@model EnrollmentApplication.Models.Enrollment
 
+
 @{
-    ViewBag.Title = "Create";
+	ViewBag.Title = "Create";
 }
 
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-	<h4>Enrollment</h4>
-	<hr />
-	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-	<div class="form-group">
-		@Html.LabelFor(model => model.StudentId, "StudentId", htmlAttributes: new { @class = "control-label col-md-2" })
-		<div class="col-md-10">
-			@Html.DropDownList("StudentId", null, htmlAttributes: new { @class = "form-control" })
-			@Html.ValidationMessageFor(model => model.StudentId, "", new { @class = "text-danger" })
+	@Html.AntiForgeryToken()
+
+	<div class="form-horizontal">
+		<h4>Enrollment</h4>
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.StudentId, "StudentId", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.DropDownList("StudentId", null, htmlAttributes: new { @class = "form-control" })
+				@Html.ValidationMessageFor(model => model.StudentId, "", new { @class = "text-danger" })
+			</div>
 		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.CourseId, "CourseId", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.DropDownList("CourseId", null, htmlAttributes: new { @class = "form-control" })
+				@Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Grade, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Grade, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Grade, "", new { @class = "text-danger" })
+			</div>
+			<div>
+				@Html.LabelFor(m => m.IsActive)
+				@Html.CheckBoxFor(m => m.IsActive)
+			</div>
+			<div>
+				@Html.LabelFor(m => m.AssignedCampus)
+				@Html.TextBoxFor(model => model.AssignedCampus)
+				@Html.ValidationMessageFor(model => model.AssignedCampus, "", new { @class = "text-danger" })
+			</div>
+			<div>
+				@Html.LabelFor(m => m.EnrollmentSemester)
+
+				@Html.RadioButtonFor(m => m.EnrollmentSemester, "Spring") Spring
+				@Html.RadioButtonFor(m => m.EnrollmentSemester, "Summer") Summer
+				@Html.RadioButtonFor(m => m.EnrollmentSemester, "Fall") Fall
+				@Html.ValidationMessageFor(model => model.EnrollmentSemester, "", new { @class = "text-danger" })
+			</div>
+			<div>
+				@Html.LabelFor(m => m.EnrollmentYear)
+				@Html.TextBoxFor(m => m.EnrollmentYear)
+				@Html.ValidationMessageFor(model => model.EnrollmentYear, "", new { @class = "text-danger" })
+			</div>
+			<div>
+				@Html.LabelFor(m => m.Notes)
+				@Html.TextBoxFor(m => m.Notes)
+				@Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Create" class="btn btn-default" />
+			</div>
+		</div>
+
 	</div>
 
-	<div class="form-group">
-		@Html.LabelFor(model => model.CourseId, "CourseId", htmlAttributes: new { @class = "control-label col-md-2" })
-		<div class="col-md-10">
-			@Html.DropDownList("CourseId", null, htmlAttributes: new { @class = "form-control" })
-			@Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
-		</div>
-	</div>
-
-	<div class="form-group">
-		@Html.LabelFor(model => model.Grade, htmlAttributes: new { @class = "control-label col-md-2" })
-		<div class="col-md-10">
-			@Html.EditorFor(model => model.Grade, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.Grade, "", new { @class = "text-danger" })
-		</div>
-		<div>
-			@Html.LabelFor(m => m.IsActive)
-			@Html.CheckBoxFor(m => m.IsActive)
-		</div>
-		<div>
-			@Html.LabelFor(m => m.AssignedCampus)
-			@Html.TextBoxFor(model => model.AssignedCampus)
-			@Html.ValidationMessageFor(model => model.AssignedCampus, "", new { @class = "text-danger" })
-		</div>
-		<div>
-			@Html.LabelFor(m => m.EnrollmentSemester)
-
-			@Html.RadioButtonFor(m => m.EnrollmentSemester, "Spring") Spring
-			@Html.RadioButtonFor(m => m.EnrollmentSemester, "Summer") Summer
-			@Html.RadioButtonFor(m => m.EnrollmentSemester, "Fall") Fall
-			@Html.ValidationMessageFor(model => model.EnrollmentSemester, "", new { @class = "text-danger" })
-		</div>
-		<div>
-			@Html.LabelFor(m => m.EnrollmentYear)
-			@Html.TextBoxFor(m => m.EnrollmentYear)
-			@Html.ValidationMessageFor(model => model.EnrollmentYear, "", new { @class = "text-danger" })
-		</div>
-	</div>
-
-	<div class="form-group">
-		<div class="col-md-offset-2 col-md-10">
-			<input type="submit" value="Create" class="btn btn-default" />
-		</div>
-	</div>
-	
-</div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+	@Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+	@Scripts.Render("~/bundles/jqueryval")
 }

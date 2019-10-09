@@ -27,6 +27,8 @@ namespace EnrollmentApplication.Models
 		[Range(2018, 9999, ErrorMessage=" Enrollment Year must be after 2018")]
 		[Required]
 		public virtual int EnrollmentYear { get; set; }
+		[InvalidChar("!@#$%^&*", ErrorMessage="Notes contains unacceptable characters!")]
+		public virtual String Notes { get; set; }
 		
 		
 	}
